@@ -1,0 +1,42 @@
+{
+  "name": "dgenius-patternlab",
+  "version": "1.0.0",
+  "description": "A dgeni package for generating patternlab documentation from source code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node .",
+    "cover": "istanbul cover jasmine-node -- ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgenius/dgenius-patternlab.git"
+  },
+  "keywords": [
+    "dgeni",
+    "ngdoc",
+    "angular",
+    "angularjs",
+    "dgeni",
+    "document generation",
+    "javascript",
+    "jsdoc",
+    "patternlab",
+    "patterns"
+  ],
+  "author": "Thomas Bouron <tbouron@gmail.com> (https://github.com/tbouron/)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/dgenius/dgenius-patternlab/issues"
+  },
+  "homepage": "https://github.com/dgenius/dgenius-patternlab#readme",
+  "dependencies": {
+    "canonical-path": "0.0.2",
+    "dgeni": "^0.4.2",
+    "dgeni-packages": "^0.11.1",
+    "node-html-encoder": "0.0.2"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.2",
+    "jasmine-node": "^1.14.5"
+  }
+}
