@@ -13,13 +13,13 @@ module.exports = new Package('dgenius-patternlab', [
 
 	computePathsProcessor.pathTemplates.push({
 		docTypes: ['provider', 'service', 'directive', 'input', 'object', 'function', 'filter', 'type'],
-		pathTemplate: '/patterns/${pattern.type}/${pattern.subType}/${name}.html',
-		outputPathTemplate: '${pattern.type}/${pattern.subType}/${name}.html'
+		pathTemplate: '{{ link.${pattern.type}-${name} }}',
+		outputPathTemplate: 'patterns/${pattern.priority.type}-${pattern.type}/${pattern.priority.subType}-${pattern.subType}/${name}.mustache'
 	});
 	computePathsProcessor.pathTemplates.push({
 		docTypes: ['module'],
-		pathTemplate: '/patterns/${pattern.type}/${pattern.subType}/${name}.html',
-		outputPathTemplate: '${pattern.type}/${pattern.subType}/${name}.html'
+		pathTemplate: '{{ link.${pattern.type}-${name} }}',
+		outputPathTemplate: 'patterns/${pattern.priority.type}-${pattern.type}/${pattern.priority.subType}-${pattern.subType}/${name}.mustache'
 	});
 	computePathsProcessor.pathTemplates.push({
 		docTypes: ['componentGroup'],

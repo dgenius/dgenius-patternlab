@@ -6,7 +6,7 @@ var mockDoc = function(name, docType) {
 		name: name,
 		docType: docType
 	}
-}
+};
 
 describe("angularPatternDocs", function() {
 	var processor;
@@ -40,6 +40,35 @@ describe("angularPatternDocs", function() {
 		});
 	});
 
+	describe('set type priority', function() {
+		var doc;
+
+		beforeEach(function() {
+			docs = [
+				mockDoc('$log', 'service'),
+				mockDoc('myButton', 'directive'),
+				mockDoc('myButton#onClick', 'function')
+			];
+		});
+
+		it('to "00" by default', function() {
+			processor.$process(docs);
+
+			docs.forEach(function(doc) {
+				expect(doc.pattern.priority.type).toEqual('00');
+			});
+		});
+
+		it('to what the processor is set to', function() {
+			processor.typePriority = '123';
+			processor.$process(docs);
+
+			docs.forEach(function(doc) {
+				expect(doc.pattern.priority.type).toEqual(processor.typePriority);
+			});
+		});
+	});
+
 	it('assign document name as pattern name', function() {
 		var docs = [
 			mockDoc('$log', 'service'),
@@ -57,23 +86,24 @@ describe("angularPatternDocs", function() {
 	it('dispatch pattern subtype priority correctly', function() {
 		var docs = [];
 		var fixtures = {
-			module: '00-modules',
-			provider: '01-providers',
-			service: '02-services',
-			directive: '03-directives',
-			filter: '04-filters',
-			other: '05-others',
-			unknown: '05-unknowns'
+			module: '00',
+			provider: '01',
+			service: '02',
+			directive: '03',
+			filter: '04',
+			other: '05',
+			unknown: '05'
 		};
 
-		for (var docType in fixtures) {
-			docs.push(mockDoc(Math.random().toString(36).substring(7), docType));
-		};
+		for (var fixture in fixtures) {
+			docs.push(mockDoc(Math.random().toString(36).substring(7), fixture));
+		}
 
 		processor.$process(docs);
 
 		docs.forEach(function(doc) {
-			expect(doc.pattern.subType).toEqual(fixtures[doc.docType]);
+			expect(doc.pattern.subType).toEqual(doc.docType + 's');
+			expect(doc.pattern.priority.subType).toEqual(fixtures[doc.docType]);
 		});
-	})
+	});
 });

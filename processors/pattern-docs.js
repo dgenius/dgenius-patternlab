@@ -5,35 +5,44 @@
  */
 module.exports = function angularPatternDocs() {
 	return {
+		typePriority: '00',
 		$runAfter: ['generateComponentGroupsProcessor'],
 		$runBefore: ['computing-paths'],
+		$validate: {
+			typePriority: { presence: true }
+		},
 		$process: function(docs) {
+			var that = this;
 			docs.forEach(function(doc) {
-				var priority;
+				var subTypePriority;
 				switch(doc.docType) {
 					case 'module':
-						priority = '00';
+						subTypePriority = '00';
 						break;
 					case 'provider':
-						priority = '01';
+						subTypePriority = '01';
 						break;
 					case 'service':
-						priority = '02';
+						subTypePriority = '02';
 						break;
 					case 'directive':
-						priority = '03';
+						subTypePriority = '03';
 						break;
 					case 'filter':
-						priority = '04';
+						subTypePriority = '04';
 						break;
 					default:
-						priority = '05';
+						subTypePriority = '05';
 						break;
 				}
 
 				doc.pattern = {
-					type: '00-angular',
-					subType: priority + '-' + doc.docType + 's',
+					priority: {
+						type: that.typePriority,
+						subType: subTypePriority
+					},
+					type: 'angular',
+					subType: doc.docType + 's',
 					name: doc.name
 				};
 			});
