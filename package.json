@@ -1,7 +1,7 @@
 {
   "name": "dgenius-patternlab",
   "version": "1.0.0",
-  "description": "A dgeni package for generating patternlab documentation from source code.",
+  "description": "A dgeni package for generating patternlab's patterns from Angular source code",
   "main": "index.js",
   "scripts": {
     "test": "jasmine-node .",
