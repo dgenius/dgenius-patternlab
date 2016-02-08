@@ -26,7 +26,7 @@ module.exports = function angularPatternDataDocs() {
         createPatternDataDoc: function(doc) {
             return {
                 id: doc.name + '-pattern-data',
-                name: doc.name + '-pattern-data',
+                name: doc.name,
                 docType: 'pattern-data',
                 pattern: doc.pattern,
                 template: 'patternData.template.json',

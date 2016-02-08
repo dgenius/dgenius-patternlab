@@ -85,7 +85,7 @@ describe("angularPatternDataDocs", function () {
         processor.$process(docs);
 
         expect(docs[1].id).toEqual(docs[0].name + '-pattern-data');
-        expect(docs[1].name).toEqual(docs[0].name + '-pattern-data');
+        expect(docs[1].name).toEqual(docs[0].name);
         expect(docs[1].pattern).toEqual(docs[0].pattern);
     });
 
