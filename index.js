@@ -7,6 +7,7 @@ module.exports = new Package('dgenius-patternlab', [
 .factory(require('./services/encode-code-block'))
 // Add Parternlab related metadata
 .processor(require('./processors/pattern-docs'))
+.processor(require('./processors/pattern-data-docs'))
 // Configure templates rendering
 .config(function(templateFinder, computePathsProcessor) {
 	templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
@@ -25,5 +26,10 @@ module.exports = new Package('dgenius-patternlab', [
 		docTypes: ['componentGroup'],
 		getPath: function() {},
 		getOutputPath: function() {}
+	});
+	computePathsProcessor.pathTemplates.push({
+		docTypes: ['pattern-data'],
+		getPath: function() {},
+		outputPathTemplate: 'patterns/${pattern.priority.type}-${pattern.type}/${pattern.priority.subType}-${pattern.subType}/${name}.json'
 	});
 });
