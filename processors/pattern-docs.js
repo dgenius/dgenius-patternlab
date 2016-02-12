@@ -5,10 +5,12 @@
  */
 module.exports = function angularPatternDocs() {
 	return {
+		outputFolder: 'patterns',
 		typePriority: '00',
 		$runAfter: ['generateComponentGroupsProcessor'],
 		$runBefore: ['computing-paths'],
 		$validate: {
+			outputFolder: { presence: true },
 			typePriority: { presence: true }
 		},
 		$process: function(docs) {
@@ -37,6 +39,7 @@ module.exports = function angularPatternDocs() {
 				}
 
 				doc.pattern = {
+					outputFolder: that.outputFolder,
 					priority: {
 						type: that.typePriority,
 						subType: subTypePriority

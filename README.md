@@ -15,6 +15,22 @@ Out of the box, the package:
 
 ### Deployment configuration
 
+#### Customise patterns output folder
+
+By default, the patterns will be generated into a `writeFilesProcessor.outputFolder + '/patterns'` folder. For instance, you might want to generate the angular patterns into the patterns' sources folder.
+
+You can configure this in your package like so:
+
+```js
+.config(function(writeFilesProcessor, angularPatternDocs) {
+    // Destination root folder path for all dgeni documents
+    writeFilesProcessor.outputFolder = 'source';
+    angularPatternDocs.outputFolder = '_patterns';
+});
+```
+
+#### Add customised mustache data
+
 To add data for all generated documents, you need to set the Javascript object `data`. For instance, you might want to add a custom css class on every patterns generated from the Angular source code
 
 You can configure this in your packages like so:

@@ -69,6 +69,35 @@ describe("angularPatternDocs", function() {
 		});
 	});
 
+	describe('set output folder', function() {
+		var doc;
+
+		beforeEach(function() {
+			docs = [
+				mockDoc('$log', 'service'),
+				mockDoc('myButton', 'directive'),
+				mockDoc('myButton#onClick', 'function')
+			];
+		});
+
+		it('to "patterns" by default', function() {
+			processor.$process(docs);
+
+			docs.forEach(function(doc) {
+				expect(doc.pattern.outputFolder).toEqual('patterns');
+			});
+		});
+
+		it('to what the processor is set to', function() {
+			processor.outputFolder = 'api/angular';
+			processor.$process(docs);
+
+			docs.forEach(function(doc) {
+				expect(doc.pattern.outputFolder).toEqual(processor.outputFolder);
+			});
+		});
+	});
+
 	it('assign document name as pattern name', function() {
 		var docs = [
 			mockDoc('$log', 'service'),

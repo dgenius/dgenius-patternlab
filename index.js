@@ -15,12 +15,12 @@ module.exports = new Package('dgenius-patternlab', [
 	computePathsProcessor.pathTemplates.push({
 		docTypes: ['provider', 'service', 'directive', 'input', 'object', 'function', 'filter', 'type'],
 		pathTemplate: '{{ link.${pattern.type}-${name} }}',
-		outputPathTemplate: 'patterns/${pattern.priority.type}-${pattern.type}/${pattern.priority.subType}-${pattern.subType}/${name}.mustache'
+		outputPathTemplate: '${pattern.outputFolder}/${pattern.priority.type}-${pattern.type}/${pattern.priority.subType}-${pattern.subType}/${name}.mustache'
 	});
 	computePathsProcessor.pathTemplates.push({
 		docTypes: ['module'],
 		pathTemplate: '{{ link.${pattern.type}-${name} }}',
-		outputPathTemplate: 'patterns/${pattern.priority.type}-${pattern.type}/${pattern.priority.subType}-${pattern.subType}/${name}.mustache'
+		outputPathTemplate: '${pattern.outputFolder}/${pattern.priority.type}-${pattern.type}/${pattern.priority.subType}-${pattern.subType}/${name}.mustache'
 	});
 	computePathsProcessor.pathTemplates.push({
 		docTypes: ['componentGroup'],
@@ -30,6 +30,6 @@ module.exports = new Package('dgenius-patternlab', [
 	computePathsProcessor.pathTemplates.push({
 		docTypes: ['pattern-data'],
 		getPath: function() {},
-		outputPathTemplate: 'patterns/${pattern.priority.type}-${pattern.type}/${pattern.priority.subType}-${pattern.subType}/${name}.json'
+		outputPathTemplate: '${pattern.outputFolder}/${pattern.priority.type}-${pattern.type}/${pattern.priority.subType}-${pattern.subType}/${name}.json'
 	});
 });
