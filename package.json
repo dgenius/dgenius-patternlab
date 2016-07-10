@@ -1,6 +1,6 @@
 {
   "name": "dgenius-patternlab",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A dgeni package for generating patternlab's patterns from Angular source code",
   "main": "index.js",
   "scripts": {
@@ -32,11 +32,11 @@
   "dependencies": {
     "canonical-path": "0.0.2",
     "dgeni": "^0.4.2",
-    "dgeni-packages": "^0.11.1",
+    "dgeni-packages": "^0.14.0",
     "node-html-encoder": "0.0.2"
   },
   "devDependencies": {
-    "istanbul": "^0.4.2",
+    "istanbul": "^0.4.4",
     "jasmine-node": "^1.14.5"
   }
 }
